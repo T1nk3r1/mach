@@ -1246,6 +1246,7 @@ pub const Buffer = struct {
     }
 
     pub fn getMappedRange(buffer: *Buffer, offset: usize, size: usize) !?*anyopaque {
+        if (buffer.map == null) return null;
         return @ptrCast(buffer.map.?[offset .. offset + size]);
     }
 
